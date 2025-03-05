@@ -12,5 +12,31 @@
     <vm:MainViewModel />
   </Design.DataContext>
 
-  <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="60"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="60"/>
+		</Grid.RowDefinitions>
+
+		<StackPanel Grid.Row="0">
+			<TextBlock Text="Мероприятия" HorizontalAlignment="Center" FontSize="30"></TextBlock>
+		</StackPanel>
+
+		<ListBox Grid.Row="1" ItemsSource="{Binding Events}">
+			<ListBox.ItemTemplate>
+				<DataTemplate>
+					<StackPanel Orientation="Vertical">
+						<TextBlock Text="{Binding EventName}"></TextBlock>
+						<TextBlock Text="{Binding Date, StringFormat=Дата начала: {0}}"></TextBlock>
+						<TextBlock Text="{Binding Days, StringFormat=Количество дней: {0}}"></TextBlock>
+					</StackPanel>
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+		</ListBox>
+
+		<Button Grid.Row="2" Content="Авторизация" Command="" Margin="10"></Button>
+			
+		</Grid>
+
 </UserControl>
